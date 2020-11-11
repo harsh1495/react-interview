@@ -6,6 +6,7 @@ import SortIcon from "../../assets/SortIcon";
 
 type DealsTableProps = DealsListType;
 
+// generic function responsible for sorting based on a key and order
 function compareValues(key: string, order: string) {
   return function innerSort(dealA: DealType, dealB: DealType) {
     const a = dealA[key as keyof DealType];
@@ -21,7 +22,7 @@ function compareValues(key: string, order: string) {
     } else if (a < b) {
       comparison = -1;
     }
-    return order === "up" ? comparison * -1 : comparison;
+    return order === "up" ? comparison * -1 : order === "down" ? comparison : 0;
   };
 }
 
@@ -30,6 +31,7 @@ const DealsTable = (props: DealsTableProps) => {
 
   const [newDeals, setNewDeals] = useState<Array<DealType>>(deals);
 
+  // was unable to integrate with redux due to lack of experience with it - these log statements just show that even if a new deal is successfully added, the deal table doesn't change because the deal table is based on a different state
   console.log(deals);
   console.log(newDeals);
 
@@ -60,6 +62,8 @@ const DealsTable = (props: DealsTableProps) => {
       onPublishClick={publish}
     />
   ));
+
+  // sort states for all 4 columns
   const [institutionSort, setInstitutionSort] = useState<
     "up" | "down" | undefined
   >();
@@ -69,6 +73,7 @@ const DealsTable = (props: DealsTableProps) => {
     "up" | "down" | undefined
   >();
 
+  // this function is responsible for calling the actual sort function for a particular key and order
   const onSort = (key: string, state: any) => {
     if (state === undefined) {
       newDeals.sort(compareValues(key, "up"));
@@ -79,6 +84,7 @@ const DealsTable = (props: DealsTableProps) => {
     }
   };
 
+  // this function only changes the direction of the sort icon in the UI
   const sortDirection = (state: any) => {
     if (state === undefined) {
       return "up";

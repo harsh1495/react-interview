@@ -20,6 +20,7 @@ type ValidationProps = {
 };
 
 const InputValidation = (props: ValidationProps) => {
+  // no experience with SASS so did some inline styling
   return (
     <span
       style={{
@@ -44,6 +45,7 @@ const DealForm = (props: DealFormProps) => {
     e: React.ChangeEvent<any>
   ) => {
     if (property === "institution") {
+      // checking for only empty/missing values
       setNewDeal({ ...newDeal, institution: e.target.value });
       if (e.target.value === "") {
         setValidInstitution(false);
@@ -52,6 +54,7 @@ const DealForm = (props: DealFormProps) => {
         setValidInstitution(true);
       }
     } else if (property === "dealType") {
+      // checking for only empty/missing values
       setNewDeal({ ...newDeal, dealType: e.target.value });
       if (e.target.value === "") {
         setValidDealType(false);
@@ -60,6 +63,7 @@ const DealForm = (props: DealFormProps) => {
         setValidDealType(true);
       }
     } else if (property === "dealSize") {
+      // checking for valid numbers as well as empty/missing values
       setNewDeal({ ...newDeal, dealSize: e.target.value });
       try {
         if (isNaN(parseFloat(e.target.value))) {
@@ -101,6 +105,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("institution")}
           required
         />
+        {/* institution could ideally be a dropdown so that junk characters are not inserted */}
         <InputValidation
           isDisplayed={validInstitution ? "none" : "block"}
           input="institution"
@@ -115,6 +120,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("dealType")}
           required
         />
+        {/* deal type could ideally be a dropdown so that junk characters are not inserted */}
         <InputValidation
           isDisplayed={validDealType ? "none" : "block"}
           input="deal type"
