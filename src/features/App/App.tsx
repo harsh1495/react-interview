@@ -7,10 +7,10 @@ import LSLogo from "../../assets/LSLogo";
 const App = () => {
   return (
     <>
-      <div className='App--header'>
+      <div className="App--header">
         <LSLogo />
       </div>
-      <div className='App'>
+      <div className="App">
         <DealsTable />
         <NewDealForm />
       </div>

@@ -29,4 +29,28 @@
       border-right: none;
     }
   }
+
+  &--div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .sortBtn {
+    border: transparent;
+    background: #1b1e24;
+    height: 8px;
+    padding: 2px 2px;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: #1b1e24;
+    }
+    &:active {
+      background-color: #1b1e24;
+    }
+  }
+
 }

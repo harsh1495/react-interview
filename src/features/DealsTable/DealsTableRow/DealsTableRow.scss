@@ -50,4 +50,42 @@
       border-right: 0px;
     }
   }
+  button {
+    align-self: flex-justify;
+    background-color: $Concrete;
+    color: $Rose;
+    padding: 5px;
+    margin: 5px;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: $Shadow;
+    }
+    &:active {
+      background-color: $Shadow;
+    }
+  }
+  .publishBtn {
+    align-self: flex-justify;
+    background-color: $Concrete;
+    color: #3C9236;
+    padding: 5px;
+    margin: 5px;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: $Shadow;
+    }
+    &:active {
+      background-color: $Shadow;
+    }
+  }
+  .dealActions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }
